@@ -32,7 +32,7 @@ export default {
           last: ""
         },
         about: "",
-        registered: DataView,
+        registered: '',
         tags: []
       }
     }
@@ -44,8 +44,15 @@ export default {
      
     cover() {
       return this.timeline.tags.splice(', '); 
+    },
+
+    myData() {
+      return Date.parse(this.timeline.registered);
+      
+    }, 
+    sortbydate() {
+      
     }
-  }
 }
 </script>
 
