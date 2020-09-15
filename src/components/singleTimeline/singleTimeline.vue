@@ -1,10 +1,10 @@
 <template>
   <div class="single-component">
-    <div class="full-name">{{fullName}}</div>
-    <div class="about">{{timeline.about}}</div>
-    <div class="registered">{{timeline.registered}}</div>
+    <div class="single-component__name">{{fullName}}</div>
+    <div class="single-component__about">{{timeline.about}}</div>
+    <div class="single-component__registered">{{timeline.registered}}</div>
     <ul class="tag__list">
-      <li class="tag__item" v-for="tag in cover">
+      <li class="tag__item" v-for="tag in cover" :key="tag.id">
         <tag :tag="tag">{{tag}}</tag>
       </li>
     </ul> 
@@ -22,21 +22,7 @@ export default {
       default: () => {}
     }
   },
-
-  data() {
-    return {
-      timelines: {
-        id: "",
-        name: {
-          first: "",
-          last: ""
-        },
-        about: "",
-        registered: '',
-        tags: []
-      }
-    }
-  },
+  
   computed: {
     fullName() {
       return this.timeline.name.first + " " + this.timeline.name.last;
@@ -45,16 +31,13 @@ export default {
     cover() {
       return this.timeline.tags.splice(', '); 
     },
-
-    myData() {
-      return Date.parse(this.timeline.registered);
-      
-    }, 
-    sortbydate() {
-      
+  
+    sortedByData: function () {
+      let formData = Date.parse(this.timeline.registered)
+      return  formData
     }
+  }
 }
 </script>
-
 
 <style lang="postcss" scoped src="./singleTimeline.pcss"></style>
